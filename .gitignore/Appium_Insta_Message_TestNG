@@ -1,0 +1,65 @@
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.sql.Driver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+
+public class NewTestNG {
+	
+	RemoteWebDriver driver; 
+	
+  @Test
+  public void f() {
+	  
+	  	driver.findElement(By.id("Message")).click();
+		driver.findElement(By.id("New Message")).click();
+		driver.findElement(By.id("com.instagram.android:id/recipients_container")).clear();
+		driver.findElement(By.id("com.instagram.android:id/recipients_container")).sendKeys("Mahrukh");
+
+		driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout"
+				+ "/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout"
+				+ "/android.widget.FrameLayout/android.widget.LinearLayout"
+				+ "/android.widget.FrameLayout[2]/"
+				+ "android.widget.ListView/android.widget.FrameLayout[1]/"
+				+ "android.widget.LinearLayout/android.widget.CheckBox")).click();
+		driver.findElement(By.id("com.instagram.android:id/row_thread_composer_edittext")).click();
+		driver.findElement(By.id("com.instagram.android:id/row_thread_composer_edittext")).clear();
+		driver.findElement(By.id("com.instagram.android:id/row_thread_composer_edittext")).sendKeys("Hello");
+		driver.findElement(By.id("com.instagram.android:id/row_thread_composer_button_send")).click();
+		driver.findElement(By.id("com.instagram.android:id/action_bar_button_back")).click();
+		String time = driver.findElement(By.id("com.instagram.android:id/row_inbox_timestamp")).getText();
+		System.out.println(time);  
+		
+	  
+	  
+  }
+
+ @BeforeTest
+  public void beforeTest() throws MalformedURLException {
+	  
+		DesiredCapabilities dc = new DesiredCapabilities();
+		dc.setCapability("deviceName", "Mah Rukh");
+		dc.setCapability("udid", "FFY5T17B09006894");
+		dc.setCapability("platformName", "Android");
+		dc.setCapability("platformVersion", "8.0");
+		dc.setCapability("noReset", true);
+		dc.setCapability("appPackage", "com.instagram.android");
+		dc.setCapability("appActivity", "com.instagram.mainactivity.MainActivity");
+		
+		driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), dc);
+  }
+
+ @AfterTest
+  public void afterTest() {
+	  driver.close();
+  }
+
+}
