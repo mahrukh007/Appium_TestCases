@@ -1,0 +1,103 @@
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.remote.MobilePlatform;
+
+public class ClassOne {
+
+	public static void main(String[] args) throws MalformedURLException {
+		// TODO Auto-generated method stub
+		RemoteWebDriver driver; 
+		
+		DesiredCapabilities dc = new DesiredCapabilities();
+		
+		dc.setCapability("udid", "FFY5T17B09006894"); //Give Device ID of your mobile phone
+		dc.setCapability("platformName", "Android");
+		dc.setCapability("platformVersion", "8.0");
+		//dc.setCapability("browserName", "Chrome");
+		dc.setCapability("noReset", true);
+		dc.setCapability("appPackage", "app.com.brd");
+		dc.setCapability("appActivity", "app.com.brd.ui.screens.startup.StartActivity");
+		
+		driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), dc);
+		
+		String LogInValue = "/hierarchy/android.widget.FrameLayout"
+				+ "/android.widget.LinearLayout/android.widget.FrameLayout"
+				+ "/android.widget.LinearLayout/android.widget.FrameLayout"
+				+ "/android.widget.RelativeLayout/android.widget.FrameLayout"
+				+ "/android.widget.RelativeLayout/android.widget.RelativeLayout"
+				+ "/android.widget.RelativeLayout/"
+				+ "android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.EditText";
+		
+		String PasswordValue = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout"
+				+ "/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout"
+				+ "/android.widget.RelativeLayout/android.widget.RelativeLayout"
+				+ "/android.widget.RelativeLayout/android.widget.LinearLayout[2"
+				+ "]/android.widget.LinearLayout/android.widget.EditText";
+		
+		String nextBtnClk = "/hierarchy/android.widget.FrameLayout/"
+				+ "android.widget.LinearLayout/android.widget.FrameLayout/"
+				+ "android.widget.LinearLayout/android.widget.FrameLayout/"
+				+ "android.widget.RelativeLayout/android.widget.FrameLayout/"
+				+ "android.widget.RelativeLayout/android.widget.RelativeLayout"
+				+ "/android.widget.RelativeLayout/android.widget.LinearLayout[2]/"
+				+ "android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Button";
+		
+		
+		String QRBtn = "/hierarchy/android.widget.FrameLayout/"
+				+ "android.widget.LinearLayout/android.widget.FrameLayout/"
+				+ "android.widget.LinearLayout/android.widget.FrameLayout/"
+				+ "android.widget.RelativeLayout/android.widget.LinearLayout"
+				+ "/android.widget.LinearLayout/android.widget.LinearLayout[1]/"
+				+ "android.widget.ImageView";
+		
+		String OfferBtn = "/hierarchy/android.widget.FrameLayout/"
+				+ "android.widget.LinearLayout/android.widget.FrameLayout/"
+				+ "android.widget.LinearLayout/android.widget.FrameLayout/"
+				+ "android.widget.RelativeLayout/android.widget.LinearLayout/"
+				+ "android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.ImageView";
+		
+		String lctBtn = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout"
+				+ "/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout"
+				+ "/android.widget.RelativeLayout/android.widget.LinearLayout"
+				+ "/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ImageView";
+		
+		String FAQBtn = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/"
+				+ "android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
+				+ "android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/"
+				+ "android.widget.LinearLayout[4]/android.widget.ImageView";
+		
+		WebElement login = driver.findElement(By.xpath(LogInValue));
+		login.sendKeys("");
+		
+		WebElement password = driver.findElement(By.xpath(PasswordValue));
+		password.sendKeys("");
+		
+		WebElement nextBtn = driver.findElement(By.xpath(nextBtnClk));
+		nextBtn.click();
+		
+		WebElement QR = driver.findElement(By.xpath(QRBtn));
+		QR.click();
+		
+		WebElement Offers = driver.findElement(By.xpath(OfferBtn));
+		Offers.click();
+		
+		WebElement LocateUS = driver.findElement(By.xpath(lctBtn));
+		LocateUS.click();
+		
+		WebElement FAQ = driver.findElement(By.xpath(FAQBtn));
+		FAQ.click();
+		
+		
+		
+		   
+		  
+	}
+
+}
