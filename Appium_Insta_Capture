@@ -1,0 +1,41 @@
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+
+public class ClassOne {
+
+	public static void main(String[] args) throws MalformedURLException {
+		// TODO Auto-generated method stub
+		RemoteWebDriver driver; 
+		DesiredCapabilities dc = new DesiredCapabilities();
+		dc.setCapability("deviceName", "Mah Rukh");
+		dc.setCapability("udid", "FFY5T17B09006894");
+		dc.setCapability("platformName", "Android");
+		dc.setCapability("platformVersion", "8.0");
+		dc.setCapability("noReset", true);
+		dc.setCapability("appPackage", "com.instagram.android");
+		dc.setCapability("appActivity", "com.instagram.mainactivity.MainActivity");
+		
+		driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), dc); 
+    
+    	driver.findElement(By.id("com.instagram.android:id/action_bar_left_button")).click();
+		driver.findElement(By.id("com.instagram.android:id/prior_mode_icon")).click();
+		driver.findElement(By.id("com.instagram.android:id/prior_mode_icon")).click();
+		driver.findElement(By.id("com.instagram.android:id/one_tap_send_button_spinning_gradient_border")).click();
+		driver.findElement(By.id("com.instagram.android:id/button_send")).click();
+		
+		driver.quit();
+		
+		
+		
+		
+		
+		
+	}
+
+}
